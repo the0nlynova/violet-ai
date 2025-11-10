@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
 body {
-  background: linear-gradient(135deg, #7F00FF, #E100FF);
+  background: linear-gradient(135deg, #e8d1ff, #c8a2ff, #b388eb);
   font-family: "Poppins", sans-serif;
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,35 +9,31 @@ body {
 }
 
 .chat-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
   width: 380px;
-  height: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(80, 0, 160, 0.2);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
 }
 
-.header {
+.chat-header {
+  background: #b388eb;
+  color: white;
   text-align: center;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.sakura-icon {
-  width: 35px;
-  height: 35px;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5c/Cherry_blossom_icon.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: 10px center;
 }
 
 .chat-box {
   flex: 1;
-  padding: 15px;
+  padding: 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -48,56 +41,48 @@ body {
 }
 
 .message {
-  max-width: 80%;
   padding: 10px 14px;
-  border-radius: 15px;
-  animation: fadeIn 0.3s ease;
+  border-radius: 14px;
+  max-width: 80%;
+  word-wrap: break-word;
+  line-height: 1.4;
 }
 
 .message.user {
-  background: rgba(255, 255, 255, 0.2);
   align-self: flex-end;
+  background: #c79ef7;
+  color: white;
 }
 
 .message.ai {
-  background: rgba(255, 255, 255, 0.1);
   align-self: flex-start;
+  background: #f2e6ff;
+  color: #4a0072;
 }
 
-.input-container {
+.chat-input {
   display: flex;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  align-items: center;
+  border-top: 2px solid #e1c6ff;
 }
 
-input {
+.chat-input input {
   flex: 1;
+  padding: 12px;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 10px 12px;
-  border-radius: 10px;
   outline: none;
+  font-size: 1rem;
 }
 
-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-button {
-  background: #9C27B0;
-  border: none;
+.chat-input button {
+  background: #a871f7;
   color: white;
-  padding: 10px 16px;
-  margin-left: 10px;
-  border-radius: 10px;
+  border: none;
+  padding: 12px 20px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 1rem;
+  transition: background 0.2s ease;
 }
 
-button:hover {
-  background: #BA68C8;
+.chat-input button:hover {
+  background: #9153f3;
 }
