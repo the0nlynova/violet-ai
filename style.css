@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  background: linear-gradient(135deg, #7F00FF, #E100FF);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.chat-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: 380px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sakura-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+  background: rgba(255, 255, 255, 0.2);
+  align-self: flex-end;
+}
+
+.message.ai {
+  background: rgba(255, 255, 255, 0.1);
+  align-self: flex-start;
+}
+
+.input-container {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  align-items: center;
+}
+
+input {
+  flex: 1;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+  background: #9C27B0;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  margin-left: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #BA68C8;
+}
