@@ -6,6 +6,11 @@ export default async function handler(req, res) {
   const { message } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
 
+   if (!apiKey) {
+    console.error("❌ Missing OPENAI_API_KEY");
+    return res.status(500).json({ reply: "Server error: API key missing." });
+  }
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
