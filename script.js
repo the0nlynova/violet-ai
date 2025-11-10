@@ -2,35 +2,6 @@ const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
 
-sendBtn.addEventListener("click", sendMessage);
-userInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") sendMessage();
-});
-
-async function sendMessage() {
-  const text = userInput.value.trim();
-  if (!text) return;
-
-  appendMessage(text, "user");
-  userInput.value = "";
-
-  appendMessage("...", "ai");
-
-  const reply = await getAIResponse(text);
-
-  // remove loading dots
-  chatBox.lastChild.remove();
-  appendMessage(reply, "ai");
-}
-
-function appendMessage(message, sender) {
-  const msgDiv = document.createElement("div");
-  msgDiv.classList.add("message", sender);
-  msgDiv.textContent = message;
-  chatBox.appendChild(msgDiv);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
-
 async function getAIResponse(userText) {
   try {
     const res = await fetch("/api/chat", {
@@ -38,9 +9,39 @@ async function getAIResponse(userText) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userText }),
     });
+
+    if (!res.ok) {
+      throw new Error("API response not OK");
+    }
+
     const data = await res.json();
     return data.reply;
-  } catch (error) {
-    return "Sorry, I couldn’t connect to the server.";
+  } catch (err) {
+    console.error("Error:", err);
+    return "Error contacting AI service.";
   }
 }
+
+function addMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.classList.add("message", sender);
+  msg.textContent = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+sendBtn.addEventListener("click", async () => {
+  const userText = userInput.value.trim();
+  if (!userText) return;
+  addMessage("user", userText);
+  userInput.value = "";
+
+  const aiReply = await getAIResponse(userText);
+  addMessage("ai", aiReply);
+});
+
+userInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    sendBtn.click();
+  }
+});
